@@ -15,18 +15,24 @@ const Layout = () => {
     el?.scrollIntoView();
   }, [pathname]);
 
+  console.log("pathname", pathname);
+
   useEffect(() => {
     dispatch(loadUser());
   }, []);
   return (
     <>
-      <SnackBar>
-        <NavBar />
-        <main>
-          <Outlet />
-        </main>
-        <FooterSection />
-      </SnackBar>
+      {pathname === "/deleteUser" ? (
+        <Outlet />
+      ) : (
+        <SnackBar>
+          <NavBar />
+          <main>
+            <Outlet />
+          </main>
+          <FooterSection />
+        </SnackBar>
+      )}
     </>
   );
 };
